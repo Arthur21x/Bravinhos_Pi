@@ -1,0 +1,57 @@
+{% load static %}
+{%load home_extras%}
+<section class="tiles">
+  {% for i in lista %}
+    {% with 'images/'|addstr:'pic'|addstr:i as img_path%}
+    <article class="style{{ i }}">
+      <span class="image">
+            <img src="/static/{{img_path}}.jpeg" alt="" />
+          </span>
+          <a href="generic.html">
+            <h2>
+              {% if i == 1 %}
+                zorzal
+              {% elif i == 2 %}
+                Zepaltas
+              {% elif i == 3 %}
+                Yuntero
+              {% elif i == 4 %}
+                Secret Barrels
+              {% elif i == 5 %}
+                Aliquam
+              {% elif i == 6 %}
+                Veroeros
+              {% elif i == 7 %}
+                Ipsum
+              {% elif i == 8 %}
+                Dolor
+              {% elif i == 9 %}
+                Nullam
+              {% elif i == 10 %}
+                Ultricies
+              {% elif i == 11 %}
+                Dictum
+              {% elif i == 12 %}
+                Pretium
+              {% endif %}
+            </h2>
+            <div class="content">
+              <p>
+                {% if i == 1 %}
+                  Vinho zorzal terroir unico
+                {% elif i == 2 %}
+                  2009 Zepaltas Pinot Noir Sonoma Coast.
+                {% elif i == 3 %}
+                  Mundo de Yuntero Bio Blanco
+                {% elif i == 4 %}
+                  Winemakers Secret Barrels.
+                {% elif i == 5 or i == 6 or i == 7 or i == 8 or i == 9 or i == 10 or i == 11 or i == 12 %}
+                  Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.
+                {% endif %}
+              </p>
+            </div>
+          </a>
+        </article>
+    {% endwith %}
+  {% endfor %}
+</section>
