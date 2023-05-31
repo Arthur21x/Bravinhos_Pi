@@ -13,7 +13,7 @@ def gera_grafico(indice: int) -> None:
         1: 'Zorzal',
         2: 'Zepaltas',
         3: 'Yuntero',
-        4: 'Secret Barrels',
+        4: 'Wines & Winemakers',
         5: 'Weninger',
         6: 'Vite Colte',
         7: 'Thomas George',
@@ -38,6 +38,7 @@ def gera_grafico(indice: int) -> None:
     fig, ax = plt.subplots(figsize=(10, 6))
 
     for index, row in grouped.iterrows():  # Define a opacidade da vinícola Zorzal
+        print(index)
         if vinicolas.get(indice).lower() == index.lower():
             opacity = 1.0
         else:
