@@ -1,4 +1,5 @@
 {%extends 'template.html'%}
+{% load static %}
 
 {%block 'conteudo'%}
 <div id="main">
@@ -58,7 +59,9 @@
                 Saviah
               {% endif %}
         </p>
-        <p></p>
+        <p>
+            <img src="{%static 'images/grafico.png'%}">
+        </p>
         <p></p>
     </div>
 </div>

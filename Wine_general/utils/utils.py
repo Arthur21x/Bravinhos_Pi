@@ -1,3 +1,4 @@
+import matplotlib
 import pandas as pd
 import plotly.graph_objects as go
 import seaborn as sns
@@ -5,7 +6,7 @@ import matplotlib.pyplot as plt
 import matplotlib.pyplot as mpld3
 import numpy as np
 import plotly.express as px
-
+matplotlib.use('Agg')
 
 def gera_grafico(indice: int) -> None:
     df_Winedata = pd.read_csv('base/static/WineData.csv', sep=';')
@@ -38,7 +39,6 @@ def gera_grafico(indice: int) -> None:
     fig, ax = plt.subplots(figsize=(10, 6))
 
     for index, row in grouped.iterrows():  # Define a opacidade da vinícola Zorzal
-        print(index)
         if vinicolas.get(indice).lower() == index.lower():
             opacity = 1.0
         else:
