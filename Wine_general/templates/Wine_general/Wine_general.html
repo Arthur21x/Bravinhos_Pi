@@ -3,7 +3,7 @@
 
 {%block 'conteudo'%}
 <div id="main">
-    <div class="inner">
+    <div class="inner" style="display: block; box-sizing: border-box">
         <h1>
             {% if i == 1 %}
                 zorzal
@@ -31,7 +31,10 @@
                 Saviah
               {% endif %}
         </h1>
-        <span class="image main"><img src="/static/images/pic{{i}}.jpeg" alt=""/></span>
+        <span class="image main" style="align-items: center; margin-bottom: 32px">
+            <img src="/static/images/pic{{i}}.jpeg"  style='margin-right: 4px; border: 0;
+            overflow-clip-margin: content-box; overflow: clip; max-width: 355px' alt=""/>
+        </span>
         <p>
              {% if i == 1 %}
                 zorzal
@@ -60,7 +63,9 @@
               {% endif %}
         </p>
         <p>
-            <img src="{%static 'images/grafico.png'%}">
+            <div class="Graphics">
+                <img src="{%static 'images/grafico.png'%}">
+            </div>
         </p>
         <p></p>
     </div>

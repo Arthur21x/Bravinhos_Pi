@@ -73,6 +73,10 @@ input::-moz-focus-inner {
 	padding: 0;
 }
 
+.Graphics {
+    border-top: 1px solid #333;
+}
+
 input, select, textarea {
 	-moz-appearance: none;
 	-webkit-appearance: none;
