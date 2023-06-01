@@ -6,7 +6,9 @@ import matplotlib.pyplot as plt
 import matplotlib.pyplot as mpld3
 import numpy as np
 import plotly.express as px
+
 matplotlib.use('Agg')
+
 
 def gera_grafico(indice: int) -> None:
     df_Winedata = pd.read_csv('base/static/WineData.csv', sep=';')
@@ -38,19 +40,30 @@ def gera_grafico(indice: int) -> None:
 
     fig, ax = plt.subplots(figsize=(10, 6))
 
-    for index, row in grouped.iterrows():  # Define a opacidade da vinícola Zorzal
-        if vinicolas.get(indice).lower() == index.lower():
-            opacity = 1.0
-        else:
-            opacity = 0.2
+    for index, row in grouped.iterrows():
         idx = np.where(grouped.index == index)[0][0]  # Encontrar o índice inteiro correspondente ao nome da vinícola
+        if vinicolas.get(indice).lower() == index.lower():
+            # Define a opacidade da vinícola
+            opacity = 1.0
+            ax.scatter(x_price[idx], index, label='Preço médio', s=100, alpha=opacity)
+            ax.scatter(x_quality[idx], index, label='Qualidade', s=100, alpha=opacity)
+            ax.scatter(x_pH[idx], index, label='pH', s=100, alpha=opacity)
+            ax.scatter(x_sugar[idx], index, label='Açúcar residual', s=100, alpha=opacity)
+            ax.scatter(x_sulfur[idx], index, label='Dióxido de enxofre total', s=100, alpha=opacity)
+            ax.scatter(x_points[idx], index, label='Pontos', s=100, alpha=opacity)
 
-        ax.scatter(x_price[idx], index, label='Preço médio', s=100, alpha=opacity)
-        ax.scatter(x_quality[idx], index, label='Qualidade', s=100, alpha=opacity)
-        ax.scatter(x_pH[idx], index, label='pH', s=100, alpha=opacity)
-        ax.scatter(x_sugar[idx], index, label='Açúcar residual', s=100, alpha=opacity)
-        ax.scatter(x_sulfur[idx], index, label='Dióxido de enxofre total', s=100, alpha=opacity)
-        ax.scatter(x_points[idx], index, label='Pontos', s=100, alpha=opacity)
+            # Adicionar rótulo na direita
+            ax.annotate('Preço médio', xy=(2, 'Preço médio'), xycoords='data', va='center')
+
+        else:
+            # Define a opacidade das demais vinícolas
+            opacity = 0.2
+            ax.scatter(x_price[idx], index, s=100, alpha=opacity)
+            ax.scatter(x_quality[idx], index, s=100, alpha=opacity)
+            ax.scatter(x_pH[idx], index, s=100, alpha=opacity)
+            ax.scatter(x_sugar[idx], index, s=100, alpha=opacity)
+            ax.scatter(x_sulfur[idx], index, s=100, alpha=opacity)
+            ax.scatter(x_points[idx], index, s=100, alpha=opacity)
 
     ax.set_title('Preço médio, qualidade, pH, açúcar residual, dióxido de enxofre total e pontos por vinícula')
     ax.set_ylabel('Vinícola')
@@ -58,5 +71,3 @@ def gera_grafico(indice: int) -> None:
 
     # Salvar o gráfico em uma variável
     plt.savefig('base/static/images/grafico.png')
-
-
