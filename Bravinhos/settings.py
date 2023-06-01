@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home.apps.HomeConfig',
-    'Wine_general.apps.WineGeneralConfig'
+    'Wine_general.apps.WineGeneralConfig',
+    'Pesquisa.apps.PesquisaConfig'
 ]
 
 MIDDLEWARE = [
