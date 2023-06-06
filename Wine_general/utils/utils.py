@@ -6,12 +6,12 @@ import matplotlib.pyplot as plt
 import matplotlib.pyplot as mpld3
 import numpy as np
 import plotly.express as px
+from googletrans import Translator
 
 matplotlib.use('Agg')
 
 
-def gera_grafico(indice: int) -> None:
-    df_Winedata = pd.read_csv('base/static/WineData.csv', sep=';')
+def gera_grafico(df_Winedata, indice: int) -> None:
     vinicolas = {
         1: 'Zorzal',
         2: 'Zepaltas',
@@ -71,3 +71,30 @@ def gera_grafico(indice: int) -> None:
 
     # Salvar o gráfico em uma variável
     plt.savefig('base/static/images/grafico.png')
+
+
+def filtros(dataframe, **kwargs):
+    filtro: pd.core.frame.Dataframe = dataframe
+    for k, v in kwargs.items():
+        filtro = dataframe[k] == v
+    return dataframe[filtro]
+
+
+def get_description(df_Winedata: pd.DataFrame, index):
+    vinicolas = {
+        1: 'Zorzal',
+        2: 'Zepaltas',
+        3: 'Yuntero',
+        4: 'Wines & Winemakers',
+        5: 'Weninger',
+        6: 'Vite Colte',
+        7: 'Thomas George',
+        8: 'The Calling',
+        9: 'Terras de Alter',
+        10: 'Tarara',
+        11: 'Stoller',
+        12: 'Saviah'}
+
+
+    vinicula = filtros(df_Winedata, winery=vinicolas.get(index))
+    return list(set(vinicula[vinicula.Id == min(vinicula.Id)].description))[0]

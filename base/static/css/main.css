@@ -75,6 +75,7 @@ input::-moz-focus-inner {
 
 .Graphics {
     border-top: 1px solid #333;
+	max-width: 700px;
 }
 
 input, select, textarea {
@@ -2594,7 +2595,7 @@ input, select, textarea {
 			-ms-transition: -ms-transform 0.5s ease, opacity 0.5s ease;
 			transition: transform 0.5s ease, opacity 0.5s ease;
 			position: relative;
-			width: calc(33.33333% - 2.5em);
+			width: calc(33.333333% - 2.5em);
 			margin: 2.5em 0 0 2.5em;
 		}
 
@@ -2626,7 +2627,7 @@ input, select, textarea {
 					position: absolute;
 					top: 0;
 					left: 0;
-					width: 100%;
+					width: 200%;
 					height: 100%;
 					opacity: 1.0;
 					z-index: 1;
@@ -2735,8 +2736,6 @@ input, select, textarea {
 
 			.tiles article.style5 > .image:before {
 				background-color: #ae85ca;
-				width: 355px;
-    			height: 355px;
 			}
 
 			.tiles article.style6 > .image:before {
@@ -2745,9 +2744,6 @@ input, select, textarea {
 
 			.tiles article.style7 > .image:before {
 				background-color: #7ecaf6;
-
-				width: 355px;
-    			height: 355px;
 			}
 
 			.tiles article.style8 > .image:before {
