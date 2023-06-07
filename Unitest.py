@@ -14,9 +14,10 @@ class TestLogin(unittest.TestCase):
         self.driver.quit()  # Encerra o driver do Selenium
 
     def test_screen(self):
-        for section in range(1, 13):
+
+        def screen(section=1):
             # Clica em um dos vinhos
-            self.driver.find_element(By.CLASS_NAME, f'style{section}').click()
+            self.driver.find_element(By.LINK_TEXT, f'/Wine_generalWine_general/{section}/').click()
             sleep(0.1)
             # clica no nav
             self.driver.find_element(By.XPATH, '//*[@id="header"]/div/nav/ul/li/a').click()
@@ -24,6 +25,10 @@ class TestLogin(unittest.TestCase):
             # Retorna para a página inicial
             self.driver.find_element(By.XPATH, '//*[@id="menu"]/div/ul/li[1]/a').click()
             sleep(0.1)
+            if section != 12:
+                section += 1
+                screen(section)
+        screen()
 
 
 if __name__ == 'main':
