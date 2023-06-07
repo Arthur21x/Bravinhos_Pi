@@ -17,14 +17,15 @@ class TestBravinhos(unittest.TestCase):
 
         def screen(section=1):
             # Clica em um dos vinhos
-            self.driver.find_element(By.CSS_SELECTOR, f'.tiles article.style{section}').click()
-            sleep(0.1)
+            sleep(0.3)
+            self.driver.find_element(By.CLASS_NAME, f'style{section}').click()
+            sleep(0.3)
             # clica no nav
             self.driver.find_element(By.XPATH, '//*[@id="header"]/div/nav/ul/li/a').click()
-            sleep(0.1)
+            sleep(0.3)
             # Retorna para a página inicial
             self.driver.find_element(By.XPATH, '//*[@id="menu"]/div/ul/li[1]/a').click()
-            sleep(0.1)
+            sleep(0.3)
             if section != 12:
                 section += 1
                 screen(section)
