@@ -26,7 +26,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install asgiref==3.7.2
-        pip install contourpy==1.0.7
         pip install cycler==0.11.0
         pip install Django==4.2
         pip install fonttools==4.39.3
