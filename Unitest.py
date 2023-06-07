@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from time import sleep
 
 
-class TestLogin(unittest.TestCase):
+class TestBravinhos(unittest.TestCase):
 
     def setUp(self):
         self.driver = webdriver.Chrome()  # Inicializa o driver do Selenium
@@ -17,7 +17,7 @@ class TestLogin(unittest.TestCase):
 
         def screen(section=1):
             # Clica em um dos vinhos
-            self.driver.find_element(By.LINK_TEXT, f'/Wine_generalWine_general/{section}/').click()
+            self.driver.find_element(By.CSS_SELECTOR, f'.tiles article.style{section}').click()
             sleep(0.1)
             # clica no nav
             self.driver.find_element(By.XPATH, '//*[@id="header"]/div/nav/ul/li/a').click()
