@@ -95,6 +95,5 @@ def get_description(df_Winedata: pd.DataFrame, index):
         11: 'Stoller',
         12: 'Saviah'}
 
-
     vinicula = filtros(df_Winedata, winery=vinicolas.get(index))
     return list(set(vinicula[vinicula.Id == min(vinicula.Id)].description))[0]
