@@ -12,8 +12,8 @@ cursor = conn.cursor()
 
 for value, index in enumerate(winedata.values):
     cursor.execute(
-        f"INSERT INTO Wine_general_winedata VALUES ({value+1}, '{index[0]}', '{index[1]}', '{index[2]}', {index[3]}, "
-        f"{index[4]}, '{index[5]}','{index[6]}', '{index[7]}', '{index[8]}', '{index[9]}')")
+        f'''INSERT INTO Wine_general_winedata VALUES ({value+1}, "{index[0]}", "{index[1]}", "{index[2]}", {index[3]}, "{index[9]}", "{index[5]}",
+         "{index[6]}", "{index[7]}", "{index[8]}", {index[4]})''')
     conn.commit()
 
 cursor.close()

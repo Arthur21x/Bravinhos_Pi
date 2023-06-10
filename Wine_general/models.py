@@ -5,16 +5,16 @@ from django.db import models
 
 class WineData(models.Model):
     data_id = models.AutoField(primary_key=True)
-    country = models.CharField(max_length=32)
+    country = models.CharField(max_length=32, blank=True)
     description = models.TextField(max_length=255)
-    designation = models.CharField(max_length=64)
-    points = models.IntegerField()
-    price = models.FloatField()
-    province = models.CharField(max_length=32)
-    region_1 = models.CharField(max_length=32)
-    region_2 = models.CharField(max_length=32)
-    variety = models.CharField(max_length=32)
-    winery = models.CharField(max_length=32)
+    designation = models.CharField(max_length=64, blank=True)
+    points = models.IntegerField(blank=True, default=0)
+    price = models.FloatField(blank=True, default=0)
+    province = models.CharField(max_length=32, blank=True)
+    region_1 = models.CharField(max_length=32, blank=True)
+    region_2 = models.CharField(max_length=32, blank=True)
+    variety = models.CharField(max_length=32, blank=True)
+    winery = models.CharField(max_length=32, blank=True)
 
 
 class WineDetails(models.Model):
