@@ -7,6 +7,7 @@ import matplotlib.pyplot as mpld3
 import numpy as np
 import plotly.express as px
 from googletrans import Translator
+import psycopg2
 
 matplotlib.use('Agg')
 
@@ -25,17 +26,17 @@ def gera_grafico(df_Winedata, indice: int) -> None:
         10: 'Tarara',
         11: 'Stoller',
         12: 'Saviah'}
-    df = df_Winedata[['winery', 'price', 'quality', 'pH', 'residual sugar', 'total sulfur dioxide', 'points']].dropna()
+    df = df_Winedata[['winery', 'price', 'quality', 'ph', 'residual_sugar', 'total_sulfur_dioxide', 'points']].dropna()
     grouped = df.groupby('winery')[
-        ['price', 'quality', 'pH', 'residual sugar', 'total sulfur dioxide', 'points']].mean()
+        ['price', 'quality', 'ph', 'residual_sugar', 'total_sulfur_dioxide', 'points']].mean()
     grouped = grouped.drop_duplicates(subset=['quality'], keep='last')
 
     # Criar arrays únicos para cada coluna
     x_price = grouped['price'].values
     x_quality = grouped['quality'].values
-    x_pH = grouped['pH'].values
-    x_sugar = grouped['residual sugar'].values
-    x_sulfur = grouped['total sulfur dioxide'].values
+    x_pH = grouped['ph'].values
+    x_sugar = grouped['residual_sugar'].values
+    x_sulfur = grouped['total_sulfur_dioxide'].values
     x_points = grouped['points'].values
 
     fig, ax = plt.subplots(figsize=(10, 6))
@@ -80,6 +81,26 @@ def filtros(dataframe, **kwargs):
     return dataframe[filtro]
 
 
+def conecta_db():
+    con = psycopg2.connect(host='localhost',
+                           database='postgres',
+                           user='postgres',
+                           password='99284356a')
+    return con
+
+
+def consultar_db(sql):
+    con = conecta_db()
+    cur = con.cursor()
+    cur.execute(sql)
+    recset = cur.fetchall()
+    registros = []
+    for rec in recset:
+        registros.append(rec)
+    con.close()
+    return registros
+
+
 def get_description(df_Winedata: pd.DataFrame, index):
     vinicolas = {
         1: 'Zorzal',
@@ -96,4 +117,5 @@ def get_description(df_Winedata: pd.DataFrame, index):
         12: 'Saviah'}
 
     vinicula = filtros(df_Winedata, winery=vinicolas.get(index))
-    return list(set(vinicula[vinicula.Id == min(vinicula.Id)].description))[0]
+    return list(set(vinicula[vinicula.data_id == min(vinicula.data_id)].description))[0]
+

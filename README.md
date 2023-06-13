@@ -14,7 +14,15 @@
 
 
 ```bash
-
-
+     -- Instalação --
+Instalar python 3.7 ou superior
+Instalar PostGreSQL
+Criar um Servidor Com nome PostGreSQL 15 e Hostname localhost
+  -- Comandos do Terminal --
+pip install -r requirements.txt
+python manage.py check --database default
+python manage.py makemigrations
+python manage.py migrate --run-syncdb
+python manage.py loaddata whole.json
 python manage.py runserver 8000
 ```
