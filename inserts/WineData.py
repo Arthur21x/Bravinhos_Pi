@@ -1,6 +1,8 @@
 import pandas as pd
 import sqlite3
 
+# OBS: O DATASET FOI APAGA DEVIDO A UTILIZAÇÃO DO BANCO DE DADOS POSTGRES SENDO POSSÍVEL UTILIZAR O PRÓPRIO BANCO
+# COMO DATASET
 df_winedata = pd.read_csv('C:/Users/ACER/PycharmProjects/Bravinhos/Bravinhos_Pi/base/static/WineData.csv', sep=';')
 
 winedata = df_winedata[['country', 'description', 'designation', 'points', 'price', 'province', 'region_1', 'region_2',
