@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Bravinhos.deployment' if 'WEBSITE_HOSTNAME' in os.environ else 'Bravinhos.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Bravinhos.deployment')
 
 application = get_wsgi_application()
