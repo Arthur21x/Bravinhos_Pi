@@ -27,9 +27,10 @@ SECRET_KEY = environ['SECRET'] if 'SECRET' in environ else 'django-insecure-!czu
 # DEBUG = True
 DEBUG = False
 
-ALLOWED_HOSTS = [environ['WEBSITE_HOSTNAME']]
-
-CSRF_TRUSTED_ORIGINS = ['https://' + environ['WEBSITE_HOSTNAME']]
+try:
+    ALLOWED_HOSTS = [environ['WEBSITE_HOSTNAME']]
+except KeyError:
+    ALLOWED_HOSTS = []
 
 # Application definition
 
