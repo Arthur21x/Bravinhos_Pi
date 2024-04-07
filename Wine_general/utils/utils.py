@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import seaborn as sns
 import matplotlib.pyplot as plt
+from pathlib import Path
 import matplotlib.pyplot as mpld3
 import numpy as np
 import plotly.express as px
@@ -72,7 +73,8 @@ def gera_grafico(df_Winedata, indice: int) -> None:
     ax.legend()
 
     # Salvar o gráfico em uma variável
-    plt.savefig('base/static/images/grafico.png')
+    BASE_DIR = Path(__file__).resolve().parent.parent.parent
+    plt.savefig(BASE_DIR / 'base' / 'static' / 'images' / 'grafico.png')
 
 
 def filtros(dataframe, **kwargs):
