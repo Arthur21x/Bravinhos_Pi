@@ -8,6 +8,7 @@ import numpy as np
 import plotly.express as px
 from googletrans import Translator
 import psycopg2
+from os import environ
 
 matplotlib.use('Agg')
 
@@ -82,10 +83,12 @@ def filtros(dataframe, **kwargs):
 
 
 def conecta_db():
-    con = psycopg2.connect(host='localhost',
-                           database='postgres',
-                           user='postgres',
-                           password='99284356a')
+    conn_str = environ['AZURE_POSTGRESQL_CONNECTIONSTRING']
+    conn_str_params = {pair.split('=')[0]: pair.split('=')[1] for pair in conn_str.split(' ')}
+    con = psycopg2.connect(host=conn_str_params['host'],
+                           database=conn_str_params['dbname'],
+                           user=conn_str_params['user'],
+                           password=conn_str_params['password'])
     return con
 
 
@@ -118,4 +121,3 @@ def get_description(df_Winedata: pd.DataFrame, index):
 
     vinicula = filtros(df_Winedata, winery=vinicolas.get(index))
     return list(set(vinicula[vinicula.data_id == min(vinicula.data_id)].description))[0]
-
