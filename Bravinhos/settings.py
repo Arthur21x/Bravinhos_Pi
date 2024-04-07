@@ -32,6 +32,8 @@ try:
 except KeyError:
     ALLOWED_HOSTS = []
 
+CSRF_TRUSTED_ORIGINS = ['https://' + environ['WEBSITE_HOSTNAME']]
+
 # Application definition
 
 INSTALLED_APPS = [
